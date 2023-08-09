@@ -3,9 +3,9 @@ main:
     li a0, 0b01011010 
     # colocar semilla en la posicion de memoria 0x100
     li a1, 0x100 
-    # Almacenamos la semilla en la dirección de memoria
+    # Almacenamos la semilla en la direcciÃ³n de memoria
     sw a0, 0(a1)    
-    # Contador para obtener los 100 números aleatorios
+    # Contador para obtener los 100 nÃºmeros aleatorios
     li a2, 0x64  
 lfsr_loop:
     # Cargamos LFSR: x^8 +x^6 + x^5 + x^4 + 1
@@ -25,11 +25,10 @@ lfsr_loop:
     add a0, t5, t4      # Sumamos dato con MSB y LSB  
 update:   
     # Paso 4.Se actualizan los valores del registro y se realiza de nuevo el paso 1
-    # Colocar los numeros consecutivamente en incrementos +4 desde el valor semilla en 0x100
-    addi a1, a1, 0x4      # Incrementamos la dirección para almacenar el siguiente 
-    sw a0, 0(a1)        # Almacenamos el nuevo dato en la posición actual 
-    addi a2, a2, -0x1     # Decrementamos el contador de números aleatorios
-    bnez a2, lfsr_loop  # Saltamos al loop si no hemos alcanzado los 100 números aleatorios
+    addi a1, a1, 0x4    # Incrementamos la direcciÃ³n para almacenar el siguiente 
+    sw a0, 0(a1)        # Almacenamos el nuevo dato en la posiciÃ³n actual 
+    addi a2, a2, -0x1   # Decrementamos el contador de nÃºmeros aleatorios
+    bnez a2, lfsr_loop  # Saltamos al loop si no hemos alcanzado los 100 nÃºmeros aleatorios
 end:
     # Fin del programa
 
